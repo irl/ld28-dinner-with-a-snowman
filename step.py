@@ -10,8 +10,8 @@ import sys, pygame
 
 assets = [
         (pygame.image.load("assets/bg.png"), 0, 0),
-        (pygame.image.load("assets/penguin.png"), 0, 160),
-        (pygame.image.load("assets/snowman.png"), 6400 - 200, 160),
+        (pygame.image.load("assets/penguin-0.png"), 0, 160),
+        (pygame.image.load("assets/snowman.png"), 6400, 160),
 ]
 
 puddles = [ x for x in range(300, 6400 - 640, 600) ]
@@ -29,6 +29,8 @@ def step(screen):
     global puddles
     global xv, yv
     global pudimg
+
+    dirtiness = 0
 
     # Process Events
     for event in pygame.event.get():
@@ -64,15 +66,22 @@ def step(screen):
     if y > 160:
         y = 160
     assets[1] = (image, x, y)
-    assets[2] = (assets[2][0], 6100 + assets[0][1], 160)
+    assets[2] = (assets[2][0], 6220 + assets[0][1], 160)
 
     for i in range(0, len(puddles)):
         puddle = puddles[i]
+        dirtiness += puddle % 10
         if puddle % 10 == 0:
             if puddle + assets[0][1] <= 165 and puddle + assets[0][1] >= -165:
                 if assets[1][2] > 150:
                     print "You got splashed"
                     puddles[i] += 1
+
+    image, x, y = assets[1]
+    if dirtiness > 5:
+        dirtiness = 5
+    image = pygame.image.load("assets/penguin-%d.png" % dirtiness)
+    assets[1] = (image, x, y)
 
     # Update Objects
     for asset in assets:
@@ -82,5 +91,8 @@ def step(screen):
     pygame.display.flip()
 
     # Return New State
-    return 0
+    if assets[0][1] == -(6400 - 400):
+        return dirtiness + 1
+    else:
+        return 0
 

@@ -32,9 +32,29 @@ try:
     screen.fill((0, 0, 0))
     pygame.display.flip()
 
-    while True:
-        step(screen)
+    state = 0
+
+    while state == 0:
+        state = step(screen)
         pygame.time.delay(50)
+
+    pygame.time.delay(1000)
+
+    winImage = None
+
+    if state == 1:
+        winImage = pygame.image.load("assets/welldone.png")
+    if state > 1 and state < 4:
+        winImage = pygame.image.load("assets/tryharder.png")
+    if state >= 4:
+        winImage = pygame.image.load("assets/toodirty.png")
+
+    screen.blit(winImage, winImage.get_rect())
+
+    pygame.display.flip()
+
+    pygame.time.delay(3000)
+
 
 except KeyboardInterrupt:
     print
