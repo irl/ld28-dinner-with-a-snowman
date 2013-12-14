@@ -32,7 +32,7 @@ try:
     pygame.display.flip()
 
     while True:
-        step()
+        step(screen)
 
 except KeyboardInterrupt:
     print

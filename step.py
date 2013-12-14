@@ -8,15 +8,21 @@
 
 import sys, pygame
 
-from world import *
+assets = [
+        (pygame.image.load("assets/bg.png"), 0, 0),
+        (pygame.image.load("assets/penguin.png"), 0, 0),
+]
 
-def step():
+def step(screen):
     # Process Events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
     # Update Objects
+    for asset in assets:
+        screen.blit(asset[0], asset[0].get_rect())
+    pygame.display.flip()
 
     # Do Game Logic
 
