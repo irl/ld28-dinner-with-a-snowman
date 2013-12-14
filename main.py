@@ -33,6 +33,7 @@ try:
 
     while True:
         step(screen)
+        pygame.time.delay(50)
 
 except KeyboardInterrupt:
     print
