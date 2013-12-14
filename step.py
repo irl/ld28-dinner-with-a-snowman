@@ -13,7 +13,7 @@ from world import *
 def step():
     # Process Events
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             sys.exit()
 
     # Update Objects
