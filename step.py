@@ -11,6 +11,7 @@ import sys, pygame
 assets = [
         (pygame.image.load("assets/bg.png"), 0, 0),
         (pygame.image.load("assets/penguin.png"), 0, 160),
+        (pygame.image.load("assets/snowman.png"), 6400 - 200, 160),
 ]
 
 puddles = [ x for x in range(300, 6400 - 640, 600) ]
@@ -63,6 +64,7 @@ def step(screen):
     if y > 160:
         y = 160
     assets[1] = (image, x, y)
+    assets[2] = (assets[2][0], 6100 + assets[0][1], 160)
 
     for i in range(0, len(puddles)):
         puddle = puddles[i]
