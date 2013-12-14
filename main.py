@@ -13,7 +13,7 @@ from step import step
 
 pygame.init()
 
-width, height = size = (320, 240)
+width, height = size = (640, 480)
 
 screen = pygame.display.set_mode(size)
 
