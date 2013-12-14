@@ -18,6 +18,19 @@ width, height = size = (320, 240)
 screen = pygame.display.set_mode(size)
 
 try:
+    # Start Screen
+    start = pygame.image.load("assets/start.png")
+    screen.blit(start, start.get_rect())
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYUP:
+                waiting = False
+
+    screen.fill((0, 0, 0))
+    pygame.display.flip()
+
     while True:
         step()
 
