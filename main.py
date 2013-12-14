@@ -53,7 +53,7 @@ try:
 
     pygame.display.flip()
 
-    pygame.time.delay(3000)
+    pygame.time.delay(10000)
 
 
 except KeyboardInterrupt:
