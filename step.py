@@ -6,7 +6,7 @@
 # For redistribution and use terms, see the LICENSE file.
 #
 
-import pygame
+import sys, pygame
 
 from world import *
 
