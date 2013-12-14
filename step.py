@@ -10,7 +10,7 @@ import sys, pygame
 
 assets = [
         (pygame.image.load("assets/bg.png"), 0, 0),
-        (pygame.image.load("assets/penguin.png"), 0, 0),
+        (pygame.image.load("assets/penguin.png"), 0, 160),
 ]
 
 def step(screen):
@@ -21,7 +21,7 @@ def step(screen):
 
     # Update Objects
     for asset in assets:
-        screen.blit(asset[0], asset[0].get_rect())
+        screen.blit(asset[0], asset[0].get_rect().move(asset[1], asset[2]))
     pygame.display.flip()
 
     # Do Game Logic
