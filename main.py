@@ -26,7 +26,8 @@ try:
     while waiting:
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:
-                waiting = False
+                if event.key == pygame.K_SPACE:
+                    waiting = False
 
     screen.fill((0, 0, 0))
     pygame.display.flip()

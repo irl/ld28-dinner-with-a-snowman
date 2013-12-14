@@ -13,11 +13,21 @@ assets = [
         (pygame.image.load("assets/penguin.png"), 0, 160),
 ]
 
+puddles = [ x for x in range(300, 6400 - 640, 600) ]
+
+pudimg = [
+        pygame.image.load("assets/puddle.png"),
+        pygame.image.load("assets/splash.png"),
+]
+
 xv = 0
 yv = 0
 
 def step(screen):
+    global assets
+    global puddles
     global xv, yv
+    global pudimg
 
     # Process Events
     for event in pygame.event.get():
@@ -31,8 +41,9 @@ def step(screen):
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 xv = 0
-            if event.key == pygame.K_UP:
-                yv = 0
+            if event.key == pygame.K_d:
+                for puddle in puddles:
+                    print "Puddle %d: %d" % (puddle, puddle + assets[0][1])
 
     # Do Game Logic
     if assets[1][2] < 160:
@@ -53,9 +64,19 @@ def step(screen):
         y = 160
     assets[1] = (image, x, y)
 
+    for i in range(0, len(puddles)):
+        puddle = puddles[i]
+        if puddle % 10 == 0:
+            if puddle + assets[0][1] <= 165 and puddle + assets[0][1] >= -165:
+                if assets[1][2] > 150:
+                    print "You got splashed"
+                    puddles[i] += 1
+
     # Update Objects
     for asset in assets:
         screen.blit(asset[0], asset[0].get_rect().move(asset[1], asset[2]))
+    for puddle in puddles:
+        screen.blit(pudimg[puddle % 10], pudimg[0].get_rect().move(puddle + assets[0][1], 0))
     pygame.display.flip()
 
     # Return New State
