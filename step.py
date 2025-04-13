@@ -46,7 +46,7 @@ def step(screen):
                 xv = 0
             if event.key == pygame.K_d:
                 for puddle in puddles:
-                    print "Puddle %d: %d" % (puddle, puddle + assets[0][1])
+                    print(f"Puddle {puddle}: {puddle + assets[0][1]}")
 
     # Do Game Logic
     if assets[1][2] < 160:
@@ -56,7 +56,7 @@ def step(screen):
         if yv <= 0:
             yv = 0
     if yv > 0:
-        yv = 10 - ((160 - assets[1][2]) / 10)
+        yv = 10 - ((160 - assets[1][2]) // 10)
 
     image, x, y = assets[0]
     x -= xv
@@ -74,7 +74,7 @@ def step(screen):
         if puddle % 10 == 0:
             if puddle + assets[0][1] <= 165 and puddle + assets[0][1] >= -165:
                 if assets[1][2] > 150:
-                    print "You got splashed"
+                    print("You got splashed")
                     puddles[i] += 1
 
     image, x, y = assets[1]

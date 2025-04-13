@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #
 # Dinner with a Snowman
 #
@@ -8,7 +8,7 @@
 # For redistribution and use terms, see the LICENSE file.
 #
 
-import sys,pygame
+import sys, pygame
 from step import step
 
 pygame.init()
@@ -57,6 +57,6 @@ try:
 
 
 except KeyboardInterrupt:
-    print
-    print "You told me to die so I'm dying now."
+    print()
+    print("You told me to die so I'm dying now.")
 

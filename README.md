@@ -7,7 +7,7 @@ Don't get your dinner suit dirty.
 Pre-requisites
 --------------
 
- * Python 2.x
+ * Python 3.x
  * Pygame
 
 Usage
